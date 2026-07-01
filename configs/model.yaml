@@ -1,0 +1,63 @@
+random_forest:
+  n_estimators: 500
+  max_depth: 15
+  min_samples_split: 5
+  min_samples_leaf: 2
+  max_features: sqrt
+  n_jobs: -1
+  random_state: 42
+
+xgboost:
+  n_estimators: 1000
+  max_depth: 6
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  reg_alpha: 0.1
+  reg_lambda: 1.0
+  use_label_encoder: false
+  eval_metric: rmse
+  random_state: 42
+
+lgbm:
+  n_estimators: 1000
+  max_depth: -1
+  num_leaves: 63
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  reg_alpha: 0.1
+  reg_lambda: 1.0
+  n_jobs: -1
+  random_state: 42
+
+catboost:
+  iterations: 1000
+  depth: 6
+  learning_rate: 0.05
+  l2_leaf_reg: 3.0
+  border_count: 128
+  random_seed: 42
+  verbose: 0
+
+neural_network:
+  hidden_layers: [256, 128, 64]
+  dropout: 0.3
+  activation: relu
+  optimizer: adam
+  learning_rate: 0.001
+  batch_size: 256
+  epochs: 100
+  early_stopping_patience: 10
+
+elastic_net:
+  alpha: 1.0
+  l1_ratio: 0.5
+  max_iter: 1000
+  tol: 0.0001
+  random_state: 42
+
+ensemble:
+  method: stacking
+  meta_learner: ridge
+  cv_folds: 5

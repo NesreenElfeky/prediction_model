@@ -1,0 +1,51 @@
+# Financial loss constants derived from industry reports
+# Sources: IBM Cost of Data Breach 2024, Unit42/CrowdStrike, Ponemon, WEF, ENISA
+
+data_breach:
+  # IBM Cost of Data Breach Report 2024
+  baseline_cost_usd: 4_880_000        # $4.88M global average
+  cost_per_record_usd: 165            # per compromised record
+  industry_multipliers:
+    healthcare: 1.99
+    financial: 1.73
+    pharmaceuticals: 1.56
+    technology: 1.41
+    energy: 1.34
+    retail: 0.98
+    education: 0.92
+    public_sector: 0.79
+  detection_containment_days_avg: 277
+  cost_reduction_ai_security: 0.224   # 22.4% lower with AI/automation
+
+ransomware:
+  # Unit42 / CrowdStrike 2024
+  avg_ransom_payment_usd: 2_540_000
+  avg_recovery_cost_usd: 1_850_000
+  avg_downtime_days: 21
+  payment_rate: 0.46                  # 46% of victims pay
+
+downtime:
+  # Ponemon Institute
+  critical_systems_cost_per_min_usd: 5_600   # $5.6K/min for critical systems
+  high_systems_cost_per_min_usd: 2_100
+  medium_systems_cost_per_min_usd: 840
+  low_systems_cost_per_min_usd: 210
+
+legal:
+  # GDPR fine ranges
+  gdpr_max_tier1_pct_revenue: 0.02    # 2% global annual turnover
+  gdpr_max_tier2_pct_revenue: 0.04    # 4% global annual turnover
+  avg_litigation_cost_usd: 1_200_000
+  avg_regulatory_fine_usd: 740_000
+  notification_cost_per_record_usd: 3.50
+
+reputation:
+  # WEF Global Cybersecurity Outlook
+  avg_customer_churn_rate_post_breach: 0.038   # 3.8%
+  avg_customer_ltv_usd: 4_200
+  stock_price_impact_30d: -0.034              # -3.4% avg
+
+expected_annual_loss:
+  # EAL = P(exploit) × Impact
+  formula: "EPSS × KEV_weight × threat_score × financial_impact"
+  kev_weight_multiplier: 2.5

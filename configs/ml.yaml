@@ -1,0 +1,36 @@
+data:
+  input_path: datasets/final/ml_dataset.parquet
+  target_column: financial_loss_usd
+  source_target_column: expected_annual_loss_usd
+  id_column: asset_id
+  test_size: 0.2
+  validation_size: 0.2
+  random_state: 42
+
+outputs:
+  root: artifacts/ml
+  reports: reports/ml
+  plots: reports/ml/plots
+
+features:
+  correlation_threshold: 0.95
+  variance_threshold: 0.0
+  max_selected_features: 30
+  leakage_columns:
+    - expected_annual_loss_usd
+    - financial_loss_usd
+    - loss_data_breach_usd
+    - loss_ransomware_usd
+    - loss_downtime_usd
+    - loss_legal_usd
+    - loss_reputation_usd
+    - financial_impact_usd
+    - exploit_probability
+
+models:
+  cv_folds: 3
+  repeated_cv_repeats: 2
+  random_search_iter: 3
+  optuna_trials: 4
+  shap_sample_size: 200
+  n_jobs: -1

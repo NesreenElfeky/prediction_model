@@ -1,0 +1,25 @@
+datasets:
+  raw:
+    threat_intelligence: datasets/raw/threat_intelligence.csv
+  processed:
+    ti_cleaned: datasets/processed/ti_cleaned.parquet
+  asset:
+    inventory: datasets/asset/asset_inventory.parquet
+  pentest:
+    results: datasets/pentest/pentest_results.parquet
+  financial:
+    loss_estimates: datasets/financial/loss_estimates.parquet
+  final:
+    ml_dataset: datasets/final/ml_dataset.parquet
+
+outputs:
+  models: outputs/models/
+  reports: outputs/reports/
+  logs: outputs/logs/
+  explainability: outputs/explainability/
+  evaluation: outputs/evaluation/
+
+artifacts:
+  checkpoints: artifacts/checkpoints/
+  encoders: artifacts/encoders/
+  scalers: artifacts/scalers/
