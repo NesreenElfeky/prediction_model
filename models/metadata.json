@@ -1,0 +1,342 @@
+{
+  "training_date": "2026-07-01T16:24:49",
+  "model_name": "Gradient Boosting",
+  "best_model_name": "Gradient Boosting",
+  "target": "financial_loss_usd",
+  "target_column": "financial_loss_usd",
+  "currency": "USD",
+  "currency_symbol": "$",
+  "metrics": {
+    "mae": 28143.767550259214,
+    "mse": 183488924938.51486,
+    "rmse": 428356.0726060912,
+    "r2": 0.975660220511864,
+    "mape": 3.0829818008627683,
+    "median_absolute_error": 385.5693611839488,
+    "explained_variance": 0.9757090760697645
+  },
+  "feature_count": 23,
+  "feature_names": [
+    "epss_score_max",
+    "weighted_risk_index",
+    "composite_vulnerability_score",
+    "epss_score_mean",
+    "attack_surface_score",
+    "recent_threat_score",
+    "cvss_score_mean",
+    "vuln_count",
+    "exploit_count_sum",
+    "is_exploitable_sum",
+    "is_exploitable_max",
+    "cvss_score_max",
+    "days_since_published_max",
+    "days_since_published_min",
+    "vulnerability_age",
+    "is_critical_sum",
+    "is_critical_max",
+    "epss_exploit_count_interaction",
+    "risk_exploit_product_max",
+    "risk_exploit_product_mean",
+    "kev_flag_max",
+    "kev_flag_sum",
+    "sev_count_low"
+  ],
+  "sklearn_version": "1.9.0",
+  "python_version": "3.14.4",
+  "dataset_version": "datasets/final/ml_dataset.parquet",
+  "feature_audit": {
+    "model_ready_signed_features": [
+      "exploit_count_sum",
+      "days_since_published_max",
+      "days_since_published_min",
+      "risk_exploit_product_max",
+      "risk_exploit_product_mean"
+    ],
+    "notes": [
+      "The saved model expects selected model-ready engineered features from the completed training pipeline.",
+      "weighted_risk_index and composite_vulnerability_score are both retained because the trained artifact depends on the saved feature schema; removing either would require retraining.",
+      "Some selected columns have count-like names but contain normalized or interaction values from upstream artifacts. CSV exports prefix visible input columns and clip negative count-like display values while preserving model-ready values internally."
+    ],
+    "weighted_vs_composite": {
+      "identical": false,
+      "correlation": 0.8603895812442393,
+      "max_abs_diff": 31.17688928002487,
+      "decision": "Both features remain because they are not mathematically identical and the trained model artifact requires the saved feature schema."
+    }
+  },
+  "source_artifacts": {
+    "model": "artifacts\\ml\\trained_model.pkl",
+    "preprocessor": "artifacts\\ml\\preprocessor.pkl",
+    "features": "artifacts\\ml\\feature_list.json",
+    "metrics": "artifacts\\ml\\metrics.json"
+  },
+  "feature_profiles": {
+    "epss_score_max": {
+      "source": "raw_dataset_column",
+      "min": 2.001020520465437e-05,
+      "p01": 0.0010005102602327186,
+      "p05": 0.0016108215189746767,
+      "median": 0.006313219742068454,
+      "p95": 0.16059090135969292,
+      "p99": 0.799822509479833,
+      "max": 1.0,
+      "iqr": 0.009264725009754973
+    },
+    "weighted_risk_index": {
+      "source": "engineered_feature",
+      "min": 0.06636079545129346,
+      "p01": 0.08606702684639585,
+      "p05": 0.11714766373321424,
+      "median": 0.2782772877730124,
+      "p95": 1.411108345110098,
+      "p99": 3.4930788785304814,
+      "max": 47.95659369764446,
+      "iqr": 0.3249357469577171
+    },
+    "composite_vulnerability_score": {
+      "source": "engineered_feature",
+      "min": 0.06636079545129346,
+      "p01": 0.08606702684639585,
+      "p05": 0.11714766373321424,
+      "median": 0.2782772877730124,
+      "p95": 1.4102809985006546,
+      "p99": 3.4114241915163883,
+      "max": 19.231568752148572,
+      "iqr": 0.3249357469577171
+    },
+    "epss_score_mean": {
+      "source": "raw_dataset_column",
+      "min": 2.001020520465437e-05,
+      "p01": 0.0009583744852732036,
+      "p05": 0.0015607960059630408,
+      "median": 0.005412760507859007,
+      "p95": 0.055148792550867354,
+      "p99": 0.303874485665107,
+      "max": 1.0,
+      "iqr": 0.0068437403075568524
+    },
+    "attack_surface_score": {
+      "source": "engineered_feature",
+      "min": 1.410981794948053,
+      "p01": 1.4166788950622442,
+      "p05": 1.428073095290627,
+      "median": 1.5211257304890855,
+      "p95": 5.791465537046087,
+      "p99": 8.20997051989726,
+      "max": 19.37238196005711,
+      "iqr": 1.5401160642030565
+    },
+    "recent_threat_score": {
+      "source": "engineered_feature",
+      "min": 0.0005470374017285673,
+      "p01": 0.01746255222424538,
+      "p05": 0.04578516420077133,
+      "median": 0.2465603848835808,
+      "p95": 0.5221237554899112,
+      "p99": 0.5657101326956439,
+      "max": 1.0000000000000002,
+      "iqr": 0.22745871773861215
+    },
+    "cvss_score_mean": {
+      "source": "raw_dataset_column",
+      "min": 0.1780821917808219,
+      "p01": 0.21917808219178075,
+      "p05": 0.2876712328767123,
+      "median": 0.6354642313546424,
+      "p95": 0.9726027397260275,
+      "p99": 0.9726027397260275,
+      "max": 1.0,
+      "iqr": 0.3320015220700154
+    },
+    "vuln_count": {
+      "source": "raw_dataset_column",
+      "min": 1.0,
+      "p01": 1.0,
+      "p05": 1.0,
+      "median": 1.0,
+      "p95": 13.0,
+      "p99": 42.0,
+      "max": 6819.0,
+      "iqr": 2.0
+    },
+    "exploit_count_sum": {
+      "source": "raw_dataset_column",
+      "min": -533.8189164284312,
+      "p01": -3.0785815932968976,
+      "p05": -0.9984588951233182,
+      "median": -0.08320490792694318,
+      "p95": -0.08320490792694318,
+      "p99": 11.10191200053785,
+      "max": 99.25156874142509,
+      "iqr": 0.16640981585388637
+    },
+    "is_exploitable_sum": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 1.0,
+      "p99": 2.0,
+      "max": 59.0,
+      "iqr": 1e-06
+    },
+    "is_exploitable_max": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 1.0,
+      "p99": 1.0,
+      "max": 1.0,
+      "iqr": 1e-06
+    },
+    "cvss_score_max": {
+      "source": "raw_dataset_column",
+      "min": 0.1780821917808219,
+      "p01": 0.21917808219178075,
+      "p05": 0.2876712328767123,
+      "median": 0.6986301369863013,
+      "p95": 0.9726027397260275,
+      "p99": 0.9863013698630136,
+      "max": 1.0,
+      "iqr": 0.5068493150684934
+    },
+    "days_since_published_max": {
+      "source": "raw_dataset_column",
+      "min": -1.6455230175183913,
+      "p01": -1.6134751727780847,
+      "p05": -1.3530864342630933,
+      "median": 0.34144335638062007,
+      "p95": 1.8557040203601085,
+      "p99": 1.983895399321335,
+      "max": 2.009934273172834,
+      "iqr": 1.4942307610167969
+    },
+    "days_since_published_min": {
+      "source": "raw_dataset_column",
+      "min": -1.6455230175183913,
+      "p01": -1.6214871339631614,
+      "p05": -1.5493794832974714,
+      "median": -0.037121809614252065,
+      "p95": 1.691458816066037,
+      "p99": 1.9418326030996826,
+      "max": 2.009934273172834,
+      "iqr": 1.5743503728675634
+    },
+    "vulnerability_age": {
+      "source": "engineered_feature",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.34144335638062007,
+      "p95": 1.8557040203601085,
+      "p99": 1.983895399321335,
+      "max": 2.009934273172834,
+      "iqr": 1.1506514360733626
+    },
+    "is_critical_sum": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 3.0,
+      "p99": 10.0,
+      "max": 124.0,
+      "iqr": 1.0
+    },
+    "is_critical_max": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 1.0,
+      "p99": 1.0,
+      "max": 1.0,
+      "iqr": 1.0
+    },
+    "epss_exploit_count_interaction": {
+      "source": "engineered_feature",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 0.5198729831546307,
+      "max": 4.14340312677511,
+      "iqr": 1e-06
+    },
+    "risk_exploit_product_max": {
+      "source": "raw_dataset_column",
+      "min": -0.08111644266323091,
+      "p01": -0.08111644266323091,
+      "p05": -0.08111644266323091,
+      "median": -0.08111644266323091,
+      "p95": -0.08111644266323091,
+      "p99": 11.999635977790852,
+      "max": 41.06565008752464,
+      "iqr": 1e-06
+    },
+    "risk_exploit_product_mean": {
+      "source": "raw_dataset_column",
+      "min": -0.08111644266323093,
+      "p01": -0.08111644266323091,
+      "p05": -0.08111644266323091,
+      "median": -0.08111644266323091,
+      "p95": -0.08111644266323091,
+      "p99": 4.16366843502228,
+      "max": 35.36062166073555,
+      "iqr": 1e-06
+    },
+    "kev_flag_max": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 1.0,
+      "iqr": 1e-06
+    },
+    "kev_flag_sum": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 16.0,
+      "iqr": 1e-06
+    },
+    "sev_count_low": {
+      "source": "raw_dataset_column",
+      "min": 0.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 1.0,
+      "iqr": 1e-06
+    }
+  },
+  "export_schema": {
+    "raw_feature__": "User-friendly raw value or direct business/count field; CVSS is converted back to the 0-10 scale for display.",
+    "derived_feature__": "Engineered model feature with business meaning and no single raw equivalent.",
+    "scaled_feature__": "Model-ready normalized/standardized upstream field; preserved for traceability because no inverse raw value is available in the saved artifacts."
+  },
+  "confidence_score_method": {
+    "summary": "Confidence is derived from row-level uncertainty, not a fixed placeholder.",
+    "components": [
+      "Gradient Boosting staged prediction standard deviation on the transformed feature matrix.",
+      "Holdout MAPE floor to avoid unrealistically narrow intervals.",
+      "Robust distance from the training feature distribution using median, IQR, and p01/p99 tail penalties.",
+      "Confidence = 100 * exp(-relative_uncertainty) * exp(-0.08 * interval_width_ratio), clipped to [0, 100]."
+    ]
+  }
+}

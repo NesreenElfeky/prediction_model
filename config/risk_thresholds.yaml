@@ -1,0 +1,5 @@
+thresholds:
+  very_low: 50000
+  low: 150000
+  medium: 300000
+  high: 700000

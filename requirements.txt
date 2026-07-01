@@ -7,3 +7,5 @@ pyyaml
 omegaconf
 pydantic
 pytest
+matplotlib
+shap
